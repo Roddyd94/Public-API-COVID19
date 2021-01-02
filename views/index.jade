@@ -3,7 +3,10 @@ extends layout
 block scripts
 
 block content
+  hr
   h1= title
+  h2 COVID-19 Advanced Search Engine
+  hr
   div(id='search-box')
     block search
   hr
@@ -15,4 +18,3 @@ block content
           input(type="range", id="date-range", name="date-range", min="0", max="1", value="0", step="1")
           label(for="date-range", id="date-range-label")
       div(id='charts')
-        

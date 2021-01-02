@@ -36,7 +36,7 @@ TYPE_LIST.forEach((v, i) => {
 /* GET users listing. */
 router.get('/', (req, res, next) => {
   console.log(req.query);
-  res.render('search', { title: '코로나 검색', gubunList: gubunString, cntTypeList: typeString });
+  res.render('search', { title: 'COVID-19 상세 검색 엔진', gubunList: gubunString, cntTypeList: typeString });
 });
 
 module.exports = router;
