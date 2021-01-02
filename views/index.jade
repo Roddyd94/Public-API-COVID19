@@ -1,5 +1,18 @@
 extends layout
 
+block scripts
+
 block content
   h1= title
-  p Welcome to #{title}
+  div(id='search-box')
+    block search
+  hr
+  div(id='result-box')
+    div(id='result-box-content')
+      div(id='map-box')
+        div(id='map')
+        div(id='map-option')
+          input(type="range", id="date-range", name="date-range", min="0", max="1", value="0", step="1")
+          label(for="date-range", id="date-range-label")
+      div(id='charts')
+        

@@ -5,7 +5,8 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var searchRouter = require('./routes/search');
+var apiRouter = require('./routes/api');
 
 var app = express();
 
@@ -20,7 +21,16 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/search', searchRouter);
+app.use('/api', apiRouter);
+
+// http redirection
+app.use(function(req, res, next) {
+  if(req.protocol === 'http') {
+    res.redirect(301, `https://${req.headers.host}${req.url}`);
+    next();
+  }
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

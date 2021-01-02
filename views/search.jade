@@ -1,0 +1,32 @@
+extends index
+
+block scripts
+  script(src='/javascripts/highcharts.js', type='text/javascript')
+  script(src='/javascripts/modules/exporting.js', type='text/javascript')
+  script(src='/javascripts/modules/export-data.js', type='text/javascript')
+  script(src='/javascripts/modules/accessibility.js', type='text/javascript')
+  script(src='/javascripts/public_api.js', type='text/javascript')
+  script(src='/javascripts/chart.js', type='text/javascript')
+  script(src='//dapi.kakao.com/v2/maps/sdk.js?appkey=068d04a733237929f4cca83e1827bab5', type='text/javascript')
+  script(src='/javascripts/circle.js', type='text/javascript')
+  script(type='text/javascript') searchButton.onclick();
+
+block search
+  form(id='form', action='/search', method='get')
+    div(id='select-boxes')
+      div(class='select-box')
+        label(for='gubun') 지역
+        select(id='gubun', name='gubun', size='6', multiple)
+          !{gubunList}
+      div(class='select-box')
+        label(for='cnt-type') 유형
+        select(id='cnt-type', name='cnt-type', size='6', multiple)
+          !{cntTypeList}
+      div(id='date-boxes')
+        div(class='date-box')
+          label(for='std-day-start') 시작일
+          input(type='date', id='std-day-start', name='std-day-start')
+        div(class='date-box')
+          label(for='std-day-end') 종료일
+          input(type='date', id='std-day-end', name='std-day-end')
+        input(type='button', id='search', value='검색')
