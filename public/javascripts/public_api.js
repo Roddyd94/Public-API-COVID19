@@ -17,8 +17,9 @@ dayEnd = document.getElementById('std-day-end');
 
 gubunNodes[0].selected = true;
 typeNodes[0].selected = true;
-dayStart.valueAsDate = new Date(new Date().setDate(-7));
-dayEnd.valueAsDate = new Date()
+dayEnd.valueAsDate = new Date();
+var tempDate = new Date();
+dayStart.valueAsDate = new Date(tempDate.setDate(tempDate.getDate()-7));
 
 searchButton.onclick = async () => {
 	queryParams = '?';
