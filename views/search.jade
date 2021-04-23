@@ -17,11 +17,11 @@ block search
       div(class='select-box')
         label(for='gubun') 지역
         select(id='gubun', name='gubun', size='6', multiple)
-          !{gubunList}
+          | !{gubunList}
       div(class='select-box')
         label(for='cnt-type') 유형
         select(id='cnt-type', name='cnt-type', size='6', multiple)
-          !{cntTypeList}
+          | !{cntTypeList}
       div(id='date-boxes')
         div(class='date-box')
           label(for='std-day-start') 시작일

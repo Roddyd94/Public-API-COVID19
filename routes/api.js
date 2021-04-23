@@ -79,7 +79,6 @@ var getData = (gubuns, cntTypes, dayStart, dayEnd) => {
   queryParams += '&' + encodeURIComponent('numOfRows') + '=' + encodeURIComponent(`${19 * (dayEnd.valueOf() - dayStart.valueOf()) / (1000 * 60 * 60 * 24)}`); /* */
   queryParams += '&' + encodeURIComponent('startCreateDt') + '=' + encodeURIComponent(dayStartString); /* */
   queryParams += '&' + encodeURIComponent('endCreateDt') + '=' + encodeURIComponent(dayEndString); /* */
-  console.log(queryParams);
   var dates = getDateList(dayStart, dayEnd);
   return new Promise((resolve, reject) => {
     request({

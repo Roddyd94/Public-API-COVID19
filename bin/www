@@ -28,7 +28,7 @@ const hostname = 'roddyd.net';
 const httpPort = normalizePort('80');
 const httpsPort = normalizePort('443');
 
-app.set('port', httpPort);
+app.set('port', httpsPort);
 app.set('host', process.env.HOST || '0.0.0.0');
 
 /**
@@ -43,9 +43,12 @@ var httpsServer = https.createServer(sslOption, app);
  */
 
 httpServer.listen(httpPort, '0.0.0.0' || hostname);
-httpsServer.listen(httpsPort, '0.0.0.0' || hostname);
 httpServer.on('error', onError);
 httpServer.on('listening', onListening);
+
+httpsServer.listen(httpsPort, '0.0.0.0' || hostname);
+httpsServer.on('error', onError);
+httpsServer.on('listening', onListening);
 
 /**
  * Normalize a port into a number, string, or false.
@@ -100,7 +103,7 @@ function onError(error) {
  */
 
 function onListening() {
-  var addr = httpServer.address();
+  var addr = httpsServer.address();
   var bind = typeof addr === 'string'
     ? 'pipe ' + addr
     : 'port ' + addr.port;

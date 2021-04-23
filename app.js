@@ -10,6 +10,17 @@ var apiRouter = require('./routes/api');
 
 var app = express();
 
+// http redirection
+app.all('*', (req, res, next) =>
+{
+  let protocol = req.headers['x-forwarded-proto'] || req.protocol;
+  
+  if (protocol == 'https')
+    next();
+  else
+    res.redirect(`https://${req.hostname}${req.url}`);
+
+});
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -23,14 +34,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/search', searchRouter);
 app.use('/api', apiRouter);
-
-// http redirection
-app.use(function(req, res, next) {
-  if(req.protocol === 'http') {
-    res.redirect(301, `https://${req.headers.host}${req.url}`);
-    next();
-  }
-});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
