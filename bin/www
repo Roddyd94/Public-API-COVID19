@@ -3,7 +3,7 @@
 /**
  * Module dependencies.
  */
-
+// 주석 2
 var app = require('../app');
 var debug = require('debug')('public-api:server');
 var http = require('http');
